@@ -8,15 +8,16 @@ hlt.send_init("PythonBot")
 
 def findNearestEnemyDirection(loc):
     direction = NORTH
-    maxDistance = Math.min(gmaeMap.width, gameMap.height) / 2
+    maxDistance = Math.min(gameMap.width, gameMap.height) / 2
 
     for (d of CARDINALS):
         distance = 0
         current = loc
         site = gameMap.getSite(current, d)
         while (site.owner == id and distance < maxDistance):
+            # If the spot checked is owned, and you are below the max, keep looking
             distance++
-            current = gameMap.getLocation (current, d)
+            current = gameMap.getLocation(current, d)
             site = gameMap.getSite(current)
         if (distance < maxDistance):
             direction = d
